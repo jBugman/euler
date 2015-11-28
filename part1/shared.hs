@@ -17,3 +17,9 @@ primal x = x `mod` 2 == 1 && not (any (\n -> x `mod` n == 0) [3,5..(intSqrt x)])
 
 intSqrt :: Int -> Int
 intSqrt x = floor . sqrt $ (fromIntegral x :: Float)
+
+-- Using Binet's formula approximation: F(n) = round( Phi^n / √5 ) provided n ≥ 0
+fibonacci :: Int -> Integer
+fibonacci n = round $ (phi ^^ n) / sqrt5 where
+  phi = 1.61803398875 :: Double
+  sqrt5 = 2.236067977 :: Double
