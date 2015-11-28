@@ -1,5 +1,8 @@
 module Shared where
 
+import qualified Data.Text    as Text
+import qualified Data.Text.IO as Text
+
 factors :: Int -> [Int]
 factors 1 = [1]
 factors n = factors' n 2
@@ -23,3 +26,8 @@ fibonacci :: Int -> Integer
 fibonacci n = round $ (phi ^^ n) / sqrt5 where
   phi = 1.61803398875 :: Double
   sqrt5 = 2.236067977 :: Double
+
+readLines :: String -> IO [String]
+readLines fileName = do
+  linesAsText <- fmap Text.lines $ Text.readFile fileName
+  return $ map Text.unpack linesAsText

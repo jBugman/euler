@@ -2,13 +2,11 @@ module Main where
 
 import Data.List.Split (chunksOf)
 import Data.List (transpose)
-import qualified Data.Text    as Text
-import qualified Data.Text.IO as Text
+import Shared (readLines)
 
 main :: IO ()
 main = do
-  numbersAsText <- fmap Text.lines $ Text.readFile "p013.txt"
-  let numbers = map Text.unpack numbersAsText
+  numbers <- readLines "p013.txt"
   print $ take 10 $ summ numbers
 
 summ :: [String] -> String
